@@ -1,0 +1,47 @@
+[package]
+name = "dataset-studio"
+version = "0.1.0"
+description = "LLM 학습용 텍스트 데이터셋 제작 도구"
+authors = ["김형석 <kpopdotlink@gmail.com>"]
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/dataset-studio/dataset-studio"
+
+[lib]
+name = "dataset_studio_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+tauri-plugin-shell = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.32", features = ["bundled", "backup", "blob"] }
+r2d2 = "0.8"
+r2d2_sqlite = "0.25"
+blake3 = "1"
+encoding_rs = "0.8"
+unicode-segmentation = "1.12"
+chrono = { version = "0.4", features = ["serde"] }
+tokio = { version = "1", features = ["full"] }
+thiserror = "2"
+anyhow = "1"
+log = "0.4"
+env_logger = "0.11"
+uuid = { version = "1", features = ["v4", "serde"] }
+walkdir = "2"
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-global-shortcut = "2"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
