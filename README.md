@@ -167,8 +167,3 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 ## License
 
 MIT License - See [LICENSE](LICENSE)
-
-## Documentation
-
-- [PRD (Product Requirements)](docs/PRD.md)
-- [Architecture (Technical Architecture)](docs/Architecture.md)
